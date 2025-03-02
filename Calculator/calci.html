@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            width: 250px;
+            padding: 20px;
+            background: #222;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 50px;
+            font-size: 1.5em;
+            text-align: right;
+            margin-bottom: 10px;
+            border: none;
+            background: #ffffff;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            width: 22%;
+            height: 50px;
+            font-size: 1.2em;
+            margin: 5px;
+            border: none;
+            border-radius: 25px;
+            background: #00b3ff;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background: #0094d3;
+        }
+        .operator {
+            background: #555;
+        }
+        .operator:hover {
+            background: #444;
+        }
+        .clear {
+            background: red;
+        }
+        .clear:hover {
+            background: darkred;
+        }
+    </style>
+    <script type="text/javascript">
+        var a, b, op, flag = 0;
+        
+        function perform(operation) {
+            if (flag == 0) {
+                a = parseFloat(document.f1.t1.value);
+                op = operation;
+                document.f1.t1.value = "";
+                flag = 1;
+            }
+        }
+
+        function calculate() {
+            if (flag == 1) {
+                b = parseFloat(document.f1.t1.value);
+                var result;
+                switch (op) {
+                    case '+': result = a + b; break;
+                    case '-': result = a - b; break;
+                    case '*': result = a * b; break;
+                    case '/': result = (b != 0) ? (a / b) : "Error"; break;
+                    default: result = "Error";
+                }
+                document.f1.t1.value = result;
+                flag = 0;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="calculator">
+        <form name="f1">
+            <input type="text" name="t1" readonly/><br>
+            <input type="button" value="0" onclick="document.f1.t1.value+='0'"/>
+            <input type="button" value="1" onclick="document.f1.t1.value+='1'"/>
+            <input type="button" value="2" onclick="document.f1.t1.value+='2'"/><br>
+            
+            <input type="button" value="3" onclick="document.f1.t1.value+='3'"/>
+            <input type="button" value="4" onclick="document.f1.t1.value+='4'"/>
+            <input type="button" value="5" onclick="document.f1.t1.value+='5'"/><br>
+            
+            <input type="button" value="6" onclick="document.f1.t1.value+='6'"/>
+            <input type="button" value="7" onclick="document.f1.t1.value+='7'"/>
+            <input type="button" value="8" onclick="document.f1.t1.value+='8'"/><br>
+            <input type="button" value="9" onclick="document.f1.t1.value+='9'"/>
+            <input type="button" value="+" class="operator" onclick="perform('+')"/>
+            <input type="button" value="-" class="operator" onclick="perform('-')"/><br>
+            <input type="button" value="*" class="operator" onclick="perform('*')"/>
+            <input type="button" value="/" class="operator" onclick="perform('/')"/>
+            <input type="button" value="=" onclick="calculate()"/><br>
+
+            <input type="button" value="C" class="clear" onclick="document.f1.t1.value=''; flag=0;"/>
+            
+            
+        </form>
+    </div>
+</body>
+</html>
