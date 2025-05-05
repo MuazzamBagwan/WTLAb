@@ -1,0 +1,32 @@
+/* Button container styling */
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /* Space between buttons */
+    margin-top: 10px;
+}
+
+
+/* Button styling */
+
+input[name="b1"],
+input[name="b2"],
+input[name="b3"] {
+    width: auto;
+    /* Adjust width as needed */
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[name="b1"]:hover,
+input[name="b2"]:hover,
+input[name="b3"]:hover {
+    background-color: #218838;
+}
